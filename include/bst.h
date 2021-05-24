@@ -1,6 +1,7 @@
 #ifndef INCLUDE_BST_H_
 #define INCLUDE_BST_H_
 #include <cassert>
+
 template <typename T>
 class BST {
  public:
@@ -10,6 +11,17 @@ class BST {
     Node* left;
     Node* right;
   }
+  BST() :root(nullptr) {}
+  ~BST() {}
+  void add(T data) {
+    root = addNode(root, data);
+  }
+  int depth() {
+    return depthTree(root);
+  }
+  int count(T data) {
+    return countNodes(root, data);
+  }
  private:
   Node* root;
   Node* addNode(Node* root, T data) {
@@ -18,9 +30,9 @@ class BST {
       root->data = data;
       root->count = 1;
       root->left = root->right = nullptr;
-    } else if (root->value > data) {
+    } else if (root->data > data) {
       root->left = addNode(root->left, data);
-    } else if (root->value < value) {
+    } else if (root->data < value) {
       root->right = addNode(root->right, data);
     } else {
       root->count++;
@@ -50,23 +62,5 @@ class BST {
       return root->count;
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};
 #endif  // INCLUDE_BST_H_
