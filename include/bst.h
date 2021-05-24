@@ -12,7 +12,7 @@ class BST {
     Node* right;
   }
   BST() :root(nullptr) {}
-  ~BST() {}
+  ~BST() {};
  
   void add(T data) {
     root = addNode(root, data);
