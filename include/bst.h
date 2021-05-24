@@ -13,9 +13,18 @@ class BST {
   }
   BST() :root(nullptr) {}
   ~BST() {}
+ 
   void add(T data) {
     root = addNode(root, data);
   }
+ 
+  void clear() {
+   if (root) {
+    delTree (root);
+    root = nullptr;
+   }
+  }
+ 
   int depth() {
     return depthTree(root);
   }
@@ -39,6 +48,17 @@ class BST {
     }
     return root;
   }
+ 
+  void delTree(Node* root) {
+   if (root == nullptr )
+    return 0;
+   else {
+    delTree(root->left);
+    delTree(root->right);
+    delete root;
+   }
+  }
+
   int depthTree(Node* root) {
     if (root == nullptr)
       return 0;
@@ -51,6 +71,7 @@ class BST {
         return Rh + 1;
     }
   }
+ 
   int countNodes(Node* root, T data) {
     if (root == nullptr)
       return 0;
