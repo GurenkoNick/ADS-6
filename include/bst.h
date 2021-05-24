@@ -28,7 +28,7 @@ class BST {
   int depth() {
     return depthTree(root);
   }
-  int count(T data) {
+  int search(T data) {
     return countNodes(root, data);
   }
  private:
