@@ -24,7 +24,7 @@ class BST {
     int search(T data) {
         return countNodes(root, data);
     }
-    
+ 
  private:
     Node* root;
     Node* addNode(Node* root, T data) {
@@ -44,20 +44,20 @@ class BST {
     }
 
     int depthTree(Node* root) {
-        if (root == nullptr)
-            return 0;
-            int Lh = depthTree(root->left);
-            int Rh = depthTree(root->right);
-            if (Lh > Rh)
-                return Lh + 1;
-            else
-                return Rh + 1;
+     if (root == nullptr)
+      return 0;
+     int Lh = depthTree(root->left);
+     int Rh = depthTree(root->right);
+     if (Lh > Rh)
+      return Lh + 1;
+     else
+      return Rh + 1;
     }
 
     int countNodes(Node* root, T data) {
-        if (root == nullptr)
+        if (root == nullptr) {
             return 0;
-        else {
+        } else {
             if (root->data > data)
                 return countNodes(root->left, data);
             if (root->data < data)
