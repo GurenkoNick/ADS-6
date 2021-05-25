@@ -1,10 +1,11 @@
+// Copyright 2021 NNTU-CS
 #ifndef INCLUDE_BST_H_
 #define INCLUDE_BST_H_
 #include <cassert>
 
 template <typename T>
 class BST {
-public:
+ public:
     struct Node {
         T data;
         int count;
@@ -17,20 +18,14 @@ public:
     void add(T data) {
         root = addNode(root, data);
     }
-    void clear() {
-        if (root)
-        {
-            delTree(root);
-            root = nullptr;
-        }
-    }
     int depth() {
         return depthTree(root) - 1;
     }
     int search(T data) {
         return countNodes(root, data);
     }
-private:
+    
+ private:
     Node* root;
     Node* addNode(Node* root, T data) {
         if (root == nullptr) {
@@ -38,27 +33,14 @@ private:
             root->data = data;
             root->count = 1;
             root->left = root->right = nullptr;
-        }
-        else if (root->data > data) {
+        } else if (root->data > data) {
             root->left = addNode(root->left, data);
-        }
-        else if (root->data < data) {
+        } else if (root->data < data) {
             root->right = addNode(root->right, data);
-        }
-        else {
+        } else {
             root->count++;
         }
         return root;
-    }
-
-    void delTree(Node* root) {
-        if (root == nullptr)
-            return 0;
-        else {
-            delTree(root->left);
-            delTree(root->right);
-            delete root;
-        }
     }
 
     int depthTree(Node* root) {
@@ -89,4 +71,4 @@ private:
 
 
 
-#endif
+#endif  // INCLUDE_BST_H_
