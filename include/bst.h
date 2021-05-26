@@ -24,7 +24,7 @@ class BST {
     int search(T data) {
         return countNodes(root, data);
     }
- 
+
  private:
     Node* root;
     Node* addNode(Node* root, T data) {
